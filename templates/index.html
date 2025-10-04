@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    #chat {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background: white;
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    .user { color: blue; margin: 5px 0; }
+    .bot { color: green; margin: 5px 0; }
+    input[type="text"] {
+      width: 80%;
+      padding: 8px;
+    }
+    button {
+      padding: 8px 12px;
+    }
+  </style>
 </head>
 <body>
-    
+  <h2>Chatbot Test</h2>
+  <div id="chat"></div>
+  <input type="text" id="userInput" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Display user message
+      const chat = document.getElementById('chat');
+      chat.innerHTML += `<div class='user'><b>You:</b> ${message}</div>`;
+      input.value = '';
+
+      // Send to backend
+      try {
+        const res = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message }),
+        });
+        const data = await res.json();
+        chat.innerHTML += `<div class='bot'><b>Bot:</b> ${data.response}</div>`;
+      } catch (error) {
+        chat.innerHTML += `<div class='bot'><b>Bot:</b> Error connecting to backend</div>`;
+      }
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
 </body>
 </html>
