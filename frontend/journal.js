@@ -26,6 +26,16 @@ async function loadJournalEntries() {
         ? `<span class="shared">Shared</span>`
         : "";
 
+      // ✨ Limit summary to only the first line of user input
+      let firstLine = entry.summary
+        ? entry.summary.split("\n")[0].trim()
+        : "No summary available.";
+
+      // Optionally limit long single lines
+      if (firstLine.length > 120) {
+        firstLine = firstLine.substring(0, 120) + "...";
+      }
+
       entryDiv.innerHTML = `
         <button class="delete-btn" data-id="${entry.id}">&times;</button>
         <div class="journal-header">
@@ -33,14 +43,14 @@ async function loadJournalEntries() {
           <span class="tag ${entry.mood.toLowerCase()}">${entry.mood}</span>
           ${sharedTag}
         </div>
-        <p class="summary">${entry.summary || "No summary available."}</p>
+        <p class="summary">${firstLine}</p>
         <button class="details-btn" data-id="${entry.id}">View Details</button>
       `;
 
       container.appendChild(entryDiv);
     });
 
-    // Attach delete button functionality
+    // --- Delete buttons ---
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         const chatId = e.target.getAttribute("data-id");
@@ -52,7 +62,7 @@ async function loadJournalEntries() {
       });
     });
 
-    // Attach "View Details" listeners
+    // --- View Details (future feature) ---
     document.querySelectorAll(".details-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const chatId = e.target.getAttribute("data-id");

@@ -4,12 +4,12 @@ const userInput = document.getElementById("userInput");
 const chatMessages = document.getElementById("chatMessages");
 const endBtn = document.getElementById("endBtn");
 const shareBtn = document.getElementById("shareBtn");
+const chatActions = document.querySelector(".chat-actions");
 
 // --- LOCAL MEMORY ---
-let conversation = []; // stores full chat log {role, text}
+let conversation = []; // define this BEFORE using it!
 
 // --- FUNCTIONS ---
-
 function appendMessage(text, sender) {
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("message", sender === "user" ? "user-message" : "bot-message");
@@ -19,10 +19,18 @@ function appendMessage(text, sender) {
 }
 
 // --- Send message to backend ---
-async function sendMessage() {
-  const message = userInput.value.trim();
+async function sendMessage(messageText = null) {
+  const message = messageText || userInput.value.trim();
   if (!message) return;
 
+  // Show chat actions once user sends first message
+  chatActions.classList.remove("hidden");
+
+  // Remove suggested message buttons if still visible
+  const suggestions = document.querySelector(".suggested-messages");
+  if (suggestions) suggestions.remove();
+
+  // Display user message
   appendMessage(message, "user");
   conversation.push({ role: "user", text: message });
   userInput.value = "";
@@ -76,7 +84,6 @@ async function saveChat(shared = false, mood = "Neutral") {
 }
 
 // --- EVENT LISTENERS ---
-
 sendBtn.addEventListener("click", (e) => {
   e.preventDefault();
   sendMessage();
@@ -89,16 +96,40 @@ userInput.addEventListener("keydown", (e) => {
   }
 });
 
-// END SESSION button
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("suggestion-btn")) {
+    const selectedText = e.target.innerText;
+    sendMessage(selectedText);
+  }
+});
+
 endBtn.addEventListener("click", async () => {
-  await saveChat(false); // shared = false
+  await saveChat(false);
   conversation = [];
   chatMessages.innerHTML = "";
   appendMessage("Session saved and reset. What's been on your mind today?", "bot");
+  chatActions.classList.add("hidden");
 });
 
-// SHARE TO THERAPIST button
 shareBtn.addEventListener("click", async () => {
-  await saveChat(true); // shared = true
+  await saveChat(true);
   appendMessage("I've saved your chat and shared it with your therapist.", "bot");
 });
+
+// --- Auto-start if mood is passed from dashboard ---
+const urlParams = new URLSearchParams(window.location.search);
+const mood = urlParams.get("mood");
+
+if (mood) {
+  // Remove suggestion bubbles immediately (if any)
+  const suggestions = document.querySelector(".suggested-messages");
+  if (suggestions) suggestions.remove();
+
+  // Show chat actions (Share / End Session) right away
+  chatActions.classList.remove("hidden");
+
+  // Let sendMessage handle everything (no manual append)
+  const initialMessage = `I'm feeling ${mood.toLowerCase()} today.`;
+  sendMessage(initialMessage);
+}
+

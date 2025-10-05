@@ -11,7 +11,7 @@
   <header class="navbar">
     <div class="logo">
       <img src="image/logo.png" alt="Sonder Logo">
-      <h1>Sonder</h1>
+      <!-- <h1>Sonder</h1> -->
     </div>
     <nav class="nav-links">
       <a href="index.html">Dashboard</a>
@@ -20,7 +20,6 @@
       <a href="profile.html">Profile</a>
     </nav>
   </header>
-
   <!-- CHAT SECTION -->
   <main class="chat-container">
     <div class="chat-box">
@@ -29,9 +28,17 @@
       </div>
 
       <div class="chat-messages" id="chatMessages">
-        <!-- Default bot greeting -->
+        <!-- Initial greeting -->
         <div class="message bot-message">
-          <p>Hello Alex, it’s nice to see you again. How have you been feeling today?</p>
+          <p>Welcome to your AI therapy session.<br>
+          I'm here to listen with empathy and provide gentle support.</p>
+        </div>
+
+        <!-- Suggested starter messages -->
+        <div class="suggested-messages">
+          <button class="suggestion-btn">I've been feeling overwhelmed lately.</button>
+          <button class="suggestion-btn">I'm having trouble sleeping.</button>
+          <button class="suggestion-btn">Work has been really stressful.</button>
         </div>
       </div>
 
@@ -42,7 +49,7 @@
       </div>
 
       <!-- Chat actions -->
-      <div class="chat-actions">
+      <div class="chat-actions hidden">
         <button id="shareBtn" class="share-btn" type="button">Share with therapist</button>
         <button id="endBtn" class="end-btn" type="button">End Session</button>
       </div>

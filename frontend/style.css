@@ -32,14 +32,18 @@ body {
   gap: 10px;
 }
 
+.logo h1 {
+  font-family: "Georgia", serif;
+  font-size: 2.2rem;
+  color: #4a3728;
+}
+
 .logo img {
-  width: 40px;
+  width: 100px;
 }
 
 .logo h1 {
-  font-family: "Georgia", serif;
-  font-size: 1.8rem;
-  color: #4a3728;
+  font-size: 2.2rem;
 }
 
 .nav-links {
@@ -110,6 +114,24 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.start-chat {
+  display: inline-block;
+  text-decoration: none;       /* remove link underline */
+  text-align: center;
+  background-color: #397eff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-chat:hover {
+  background-color: #2563eb;
 }
 
 .happy { background-color: #fffacd; }
@@ -254,10 +276,26 @@ body {
   color: #444;
 }
 
-.tag.anxious {
-  background-color: #ffe5c0;
-  color: #b87300;
+.tag.happy {
+  background-color: #fffacd; /* soft yellow */
+  color: #856404;
 }
+
+.tag.anxious {
+  background-color: #d6e4ff; /* light periwinkle */
+  color: #1a4b8b;
+}
+
+.tag.sad {
+  background-color: #e0e7ff; /* gentle blue */
+  color: #374151;
+}
+
+.tag.angry {
+  background-color: #ffe0e0; /* pale red/pink */
+  color: #a12b2b;
+}
+
 
 .shared {
   color: #24a148;
@@ -451,4 +489,33 @@ body {
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* --- NEW: Suggested starter messages --- */
+.suggested-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.suggestion-btn {
+  background-color: #f4f7ff;
+  border: 1px solid #d0d8ff;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.3s ease;
+}
+
+.suggestion-btn:hover {
+  background-color: #e6ecff;
+}
+
+/* Hide chat actions initially */
+.hidden {
+  display: none;
 }

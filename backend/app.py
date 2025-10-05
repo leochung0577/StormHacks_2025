@@ -40,7 +40,7 @@ def detect_mood(chat_log):
         Analyze the user's emotional tone based on their messages below.
 
         Respond with only ONE word from the following options:
-        Neutral, Good, Frustrated, or Anxious.
+        Happy, Anxious, Sad, Angry.
 
         User messages:
         {user_texts}
@@ -54,7 +54,7 @@ def detect_mood(chat_log):
         mood = response.text.strip().capitalize()
 
         # Sanitize unexpected output
-        if mood not in ["Neutral", "Good", "Frustrated", "Anxious"]:
+        if mood not in ["Happy", "Anxious", "Sad", "Angry"]:
             mood = "Neutral"
 
         return mood
@@ -83,7 +83,15 @@ def chat():
         if not messages:
             return jsonify({"error": "No messages provided"}), 400
 
-        contents = [
+        STYLE_PROMPT = (
+            "You are Sonder therapy chatbot"
+            "Respond in a calm, encouraging tone. "
+            "Act as a therapist, giving users recommendations to their mental health issues"
+            "Do not give unnecessarily long responses"
+            "Avoid repeating the user's words."
+        )
+        contents = [{"role": "user", "parts": [{"text": STYLE_PROMPT}]}]
+        contents += [
             {"role": m["role"], "parts": [{"text": m["text"]}]}
             for m in messages
         ]

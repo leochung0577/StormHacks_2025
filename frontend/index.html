@@ -11,7 +11,7 @@
   <header class="navbar">
     <div class="logo">
       <img src="image/logo.png" alt="Sonder Logo">
-      <h1>Sonder</h1>
+      <!-- <h1>Sonder</h1> -->
     </div>
     <nav class="nav-links">
       <a href="index.html" class="active">Dashboard</a>
@@ -32,7 +32,7 @@
         <button class="feeling sad">Sad</button>
         <button class="feeling angry">Angry</button>
       </div>
-      <button class="start-chat">Start Chat Session</button>
+      <a href="chat.html" class="start-chat">Start Chat Session</a>
     </section>
 
     <section class="chat-summaries">
@@ -52,5 +52,15 @@
       <button class="view-all">View All Entries</button>
     </section>
   </main>
+  <script>
+  // When an emotion button is clicked, redirect to chat.html with that mood in the URL
+  document.querySelectorAll(".feeling").forEach(button => {
+    button.addEventListener("click", () => {
+      const mood = button.textContent.trim(); // e.g. "Happy"
+      // Go to chat page with query parameter
+      window.location.href = `chat.html?mood=${encodeURIComponent(mood)}`;
+    });
+  });
+</script>
 </body>
 </html>
