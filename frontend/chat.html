@@ -1,34 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>AI Chat — SonderAI</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonder - AI Chat</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="brand"><div class="logo"></div><h1>SonderAI</h1></div>
-      <nav class="nav"><a href="index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="journal.html">Journal</a><a href="profile.html">Profile</a></nav>
-    </header>
-
-    <div class="card chat-window">
-      <h2 style="margin:0">AI Chat</h2>
-      <div class="messages card" style="padding:12px">
-        <div class="msg bot">What's been on your mind today?</div>
-        <div class="msg user">I've been feeling overwhelmed lately. There's a lot going on at work...</div>
-        <div class="msg bot">I'm sorry to hear that. Can you tell me what specifically is causing you pressure?</div>
-      </div>
-
-      <div class="input-row">
-        <input placeholder="Type a message...">
-        <button class="cta">Send</button>
-        <button class="btn-outline">End Session</button>
-      </div>
-
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="image/logo.png" alt="Sonder Logo">
+      <h1>Sonder</h1>
     </div>
+    <nav class="nav-links">
+      <a href="index.html">Dashboard</a>
+      <a href="journal.html">Journal</a>
+      <a href="chat.html" class="active">AI Chat</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
 
-  </div>
+  <!-- CHAT SECTION -->
+  <main class="chat-container">
+    <div class="chat-box">
+      <div class="chat-header">
+        <h2>What's been on your mind today?</h2>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <!-- Default bot greeting -->
+        <div class="message bot-message">
+          <p>Hello Alex, it’s nice to see you again. How have you been feeling today?</p>
+        </div>
+      </div>
+
+      <!-- Chat input (explicitly not in a form) -->
+      <div class="chat-input" id="chatInputContainer">
+        <input id="userInput" type="text" autocomplete="off" placeholder="Type your message..." />
+        <button id="sendBtn" class="send-btn" type="button">Send</button>
+      </div>
+
+      <!-- Chat actions -->
+      <div class="chat-actions">
+        <button id="shareBtn" class="share-btn" type="button">Share with therapist</button>
+        <button id="endBtn" class="end-btn" type="button">End Session</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
 </body>
 </html>

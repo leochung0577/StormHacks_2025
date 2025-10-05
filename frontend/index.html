@@ -1,61 +1,56 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SonderAI — Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonder - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="brand">
-        <div class="logo"></div>
-        <h1>SonderAI</h1>
-      </div>
-      <nav class="nav">
-        <a href="dashboard.html">Dashboard</a>
-        <a href="journal.html">Journal</a>
-        <a href="chat.html">AI Chat</a>
-        <a href="profile.html">Profile</a>
-      </nav>
-    </header>
-
-    <div class="card hero">
-      <div class="left">
-        <h2>Your 24/7 AI Therapist, Powered by Real Humans</h2>
-        <p class="footer-note">Confidential, secure, and guided by licensed professionals when needed.</p>
-        <p style="margin-top:20px"><a class="cta" href="dashboard.html">Get Started</a></p>
-
-        <div style="display:flex;gap:20px;margin-top:28px;color:var(--muted)">
-          <div>
-            <strong>24/7 Support</strong>
-            <div style="font-size:12px;margin-top:6px">Voice-assisted care when you need it most.</div>
-          </div>
-          <div>
-            <strong>Affordable Care</strong>
-            <div style="font-size:12px;margin-top:6px">Accessible care for everyone.</div>
-          </div>
-          <div>
-            <strong>Private & Secure</strong>
-            <div style="font-size:12px;margin-top:6px">HIPAA-aligned privacy by design.</div>
-          </div>
-        </div>
-      </div>
-      <div style="width:360px">
-        <div class="card small-card" style="border-radius:10px">
-          <h3 style="margin:0 0 8px">Mood Tracker</h3>
-          <div class="mood-row">
-            <div class="mood">😊</div>
-            <div class="mood">🙂</div>
-            <div class="mood">😐</div>
-            <div class="mood">🙁</div>
-            <div class="mood">...</div>
-          </div>
-        </div>
-      </div>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="image/logo.png" alt="Sonder Logo">
+      <h1>Sonder</h1>
     </div>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Dashboard</a>
+      <a href="journal.html">Journal</a>
+      <a href="chat.html">AI Chat</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+  </header>
 
-  </div>
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <section class="welcome">
+      <h2>Welcome, Alex</h2>
+      <p>How are you feeling?</p>
+      <div class="feelings">
+        <button class="feeling happy">Happy</button>
+        <button class="feeling anxious">Anxious</button>
+        <button class="feeling sad">Sad</button>
+        <button class="feeling angry">Angry</button>
+      </div>
+      <button class="start-chat">Start Chat Session</button>
+    </section>
+
+    <section class="chat-summaries">
+      <h3>Chat Summaries</h3>
+      <div class="chat-entry">
+        <p class="date">Today</p>
+        <p>I've been feeling overwhelmed with work lately.</p>
+      </div>
+      <div class="chat-entry">
+        <p class="date">October 04, 2025</p>
+        <p>I had a good conversation with my friend yesterday.</p>
+      </div>
+      <div class="chat-entry">
+        <p class="date">October 04, 2025</p>
+        <p>I feel like I'm not making any friends.</p>
+      </div>
+      <button class="view-all">View All Entries</button>
+    </section>
+  </main>
 </body>
 </html>

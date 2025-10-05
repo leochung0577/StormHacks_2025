@@ -1,12 +1,14 @@
 # Core framework
 Flask
+Flask-Session
+Flask-Cors
 
 # For reading your .env file safely
 python-dotenv
 
-# For making API requests (to Gemini or OpenAI, etc.)
+# For making API requests
 requests
-
 google-genai
 
-Flask-Session
+# Database
+sqlite3
