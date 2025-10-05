@@ -1,0 +1,12 @@
+# Core framework
+Flask
+
+# For reading your .env file safely
+python-dotenv
+
+# For making API requests (to Gemini or OpenAI, etc.)
+requests
+
+google-genai
+
+Flask-Session
