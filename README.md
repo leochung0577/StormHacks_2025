@@ -3,9 +3,8 @@ Therapy Chatbot
 
 ## How to get and input Key
 create a .env file
-GEMINI_API_KEY=***************************************
+GEMINI_API_KEY=YOUR_API_KEY
 
-replace the "*" with api key
 https://aistudio.google.com/ 
 bottom left click "Get API key"
 top right click "Create API key"
